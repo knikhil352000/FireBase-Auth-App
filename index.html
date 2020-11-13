@@ -118,7 +118,30 @@
       </li>
     </ul>
   </div>
-  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyB_LJ5oz-DXFEpICg_pgSp7QSFXRnRbzHk",
+        authDomain: "fir-auth-e7116.firebaseapp.com",
+        databaseURL: "https://fir-auth-e7116.firebaseio.com",
+        projectId: "fir-auth-e7116",
+        appId: "1:40007498592:web:028cbeca47b5d9d0b47c05"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //Make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    
+    </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="javascripts/auth.js"></script>
