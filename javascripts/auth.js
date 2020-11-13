@@ -1,3 +1,18 @@
+// get data
+db.collection('guides').get().then((snapshot) => {
+    setupGuides(snapshot.docs);
+})
+
+//listen for auth status change
+auth.onAuthStateChanged(user => {
+    if(user){
+        // console.log('User logged In', user);
+    }else{
+        console.log('User logged Out');
+    }
+})
+
+
 // Sign Up
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
@@ -18,9 +33,7 @@ signupForm.addEventListener('submit', (e) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
-    auth.signOut().then(() => {
-        console.log('User signed out');
-    });
+    auth.signOut();
 });
 
 //login method
@@ -35,5 +48,5 @@ loginForm.addEventListener('click', (e) => {
         const modal = document.querySelector('#modal-signup');
         M.Modal.getInstance(modal).close();
         loginForm.reset();
-    })
-})
+    });
+});
