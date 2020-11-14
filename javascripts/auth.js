@@ -14,11 +14,15 @@ adminForm.addEventListener('submit', (e) => {
 
 auth.onAuthStateChanged(user => {
     if(user){
+        user.getIdTokenResult().then(idTokenResult => {
+            user.admin = idTokenResult.claims.admin; 
+            setupUI(user);
+        })
         // console.log('User logged In', user);
         // get data
     db.collection('guides').onSnapshot((snapshot) => { //for realtime database remove get and use onSnapshot function
         setupGuides(snapshot.docs);
-        setupUI(user);
+        
 })
     }else{
         // console.log('User logged Out');
