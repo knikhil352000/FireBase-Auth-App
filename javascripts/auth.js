@@ -1,5 +1,6 @@
-
+/*****************************************************************/
 //listen for auth status change
+
 auth.onAuthStateChanged(user => {
     if(user){
         // console.log('User logged In', user);
@@ -15,6 +16,7 @@ auth.onAuthStateChanged(user => {
     }
 });
 
+/*****************************************************************/
 //Create new guide
 
 const createForm = document.querySelector('#create-form');
@@ -33,6 +35,7 @@ createForm.addEventListener('submit', (e) => {
     });
 });
 
+/*****************************************************************/
 
 // Sign Up
 const signupForm = document.querySelector('#signup-form');
@@ -50,12 +53,16 @@ signupForm.addEventListener('submit', (e) => {
     }) //asynchronous task
 })
 
+/*****************************************************************/
+
 //logout method
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
     auth.signOut();
 });
+
+/*****************************************************************/
 
 //login method
 const loginForm = document.querySelector('#login-form');
@@ -71,3 +78,5 @@ loginForm.addEventListener('click', (e) => {
         loginForm.reset();
     });
 });
+
+/*****************************************************************/
