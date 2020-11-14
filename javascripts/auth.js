@@ -30,9 +30,9 @@ createForm.addEventListener('submit', (e) => {
         const modal = document.querySelector('#modal-create');
         M.Modal.getInstance(modal).close();
         createForm.reset();
-    }).catch(err => {
+    }, err =>{
         console.log('You are not authenticated');
-    });
+    })
 });
 
 /*****************************************************************/
@@ -47,6 +47,10 @@ signupForm.addEventListener('submit', (e) => {
 
     //sign up the user
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        return db.collection('users').doc(cred.user.uid).set({
+            bio: signupForm['signup-bio'].value
+        })
+    }).then(() => {
         const modal = document.querySelector('#modal-signup');
         M.Modal.getInstance(modal).close();
         signupForm.reset();
