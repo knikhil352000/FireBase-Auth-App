@@ -4,7 +4,7 @@ auth.onAuthStateChanged(user => {
     if(user){
         // console.log('User logged In', user);
         // get data
-    db.collection('guides').get().then((snapshot) => {
+    db.collection('guides').onSnapshot((snapshot) => { //for realtime database remove get and use onSnapshot function
         setupGuides(snapshot.docs);
         setupUI(user);
 })
@@ -16,10 +16,10 @@ auth.onAuthStateChanged(user => {
 });
 
 //Create new guide
+
 const createForm = document.querySelector('#create-form');
 createForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     db.collection('guides').add({
         title: createForm['title'].value,
         content: createForm['content'].value
